@@ -81,6 +81,7 @@ class Student_Course(APIView):
 class Available_Course(APIView):
     def get(self, request, pk, format=None):
         res_data = []
-        enroll_data = Enrollment.objects.filter(student=pk).values('id')
-        res_data = Courses.objects.filter(id__in=enroll_data).values()
+        enroll_data = Enrollment.objects.filter(student=pk).values('course')
+        res_data = Courses.objects.filter(~Q(id__in=enroll_data)).values()
+        print('###############', res_data, '********', enroll_data)
         return Response(res_data)
