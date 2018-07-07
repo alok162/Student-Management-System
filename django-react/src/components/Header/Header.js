@@ -21,26 +21,6 @@ class Header extends Component {
   render() {
     return (
       <div>
-        {/* <div className="callout primary"> */}
-        {/* <div class="row">
-  <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-4">.col-sm-4</div>
-</div> */}
-
-        {/* <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={40}
-        totalSlides={2}
-      >        
-        <Slider>
-          <Slide index={0}><img src={require('../../images/593888.jpg')} /></Slide>
-          <Slide index={1}><img src={require('../../images/877414.jpg')} /></Slide>
-        </Slider>
-        {this.index}
-        <ButtonBack className='buttonLeftIcon'><i classNameName="fa fa-chevron-left"></i></ButtonBack>
-        <ButtonNext className='buttonRightIcon'><i classNameName="fa fa-chevron-right"></i></ButtonNext>
-      </CarouselProvider> */}
         <NavBar />
       </div>
     );

@@ -13,7 +13,6 @@ class App extends Component {
     return (
       <div>
         <Routes />
-        <hr />
       </div>
     );
   }
