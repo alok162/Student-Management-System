@@ -12,7 +12,6 @@ from student_app.serializers import RegisterCourseSerilizer
 from student_app.models import User
 from student_app.serializers import ChangePasswordSerializer
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
 from rest_framework import permissions
 from django.db.models import Q
 
@@ -74,6 +73,8 @@ class Student_Course(APIView):
             res['enrollment_id'] = i.id
             res['course_name'] = i.course.course_name
             res_data.append(res)
+            if len(res_data) == 0:
+                return Response('you have not registred any subject')
         return Response(res_data)
 
 
