@@ -78,3 +78,9 @@ class Student_Course(APIView):
         return Response(res_data)
 
 
+class Available_Course(APIView):
+    def get(self, request, pk, format=None):
+        res_data = []
+        enroll_data = Enrollment.objects.filter(student=pk).values('id')
+        res_data = Courses.objects.filter(id__in=enroll_data).values()
+        return Response(res_data)
