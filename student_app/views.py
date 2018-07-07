@@ -27,6 +27,23 @@ class User_Signup(APIView):
         return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+class UpdatePassword(APIView):
+    permission_classes = (permissions.AllowAny,)
+
+    def post(self, request, format=None):
+        data = JSONParser().parse(request)
+        user = User.objects.get(pk=data['id'])
+        print('users password data', data)
+        user.set_password(data['new_password'])
+        user.save()
+        return Response('Password changed successfully')
+
+        # if form.is_valid():
+        #     user = form.save()
+        #     update_session_auth_hash(request, user)
+        #     return Response(data='Your password was successfully updated!')
+        # return Response('please correct the error')
+
 
 class Register_Course(APIView):
     def post(self, request, format=None):
@@ -59,4 +76,5 @@ class Student_Course(APIView):
             res['course_name'] = i.course.course_name
             res_data.append(res)
         return Response(res_data)
+
 
