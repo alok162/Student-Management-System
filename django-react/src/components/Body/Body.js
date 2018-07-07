@@ -77,7 +77,7 @@ class Body extends Component {
   initialData() {
     console.log("function called");
     axios
-      .get("/list_course/11/", {
+      .get("/list_course/"+localStorage.getItem("student_id")+"/", {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json"
@@ -89,7 +89,7 @@ class Body extends Component {
       });
 
     axios
-      .get("/available_course/11/", {
+      .get("/available_course/"+localStorage.getItem("student_id")+"/", {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json"
