@@ -14,10 +14,11 @@ from student_app.models import User
 
 class User_Signup(APIView):
     def post(self, request, format=None):
-        form = UserSignupSerializer(JSONParser().parse(request))
+        data = JSONParser().parse(request)
+        form = UserSignupSerializer(data=data)
         if form.is_valid():
             form.save()
-            return Response(request.data, status=status.HTTP_201_CREATED)
+            return Response(form.data, status=status.HTTP_201_CREATED)
         return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -29,3 +30,10 @@ class Register_Course(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        enroll_obj = Enrollment.objects.get(id=pk)
+        enroll_obj.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
