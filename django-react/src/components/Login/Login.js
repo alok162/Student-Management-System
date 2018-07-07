@@ -80,7 +80,7 @@ onClick(ev) {
   .then(res => {
     localStorage.setItem('accessToken', res.data.access)
     localStorage.setItem('refreshToken', res.data.refresh)
-          console.log('token',res.data)
+    console.log('token',res.data)
   })   
 }
 
