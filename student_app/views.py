@@ -34,15 +34,14 @@ class UpdatePassword(APIView):
         data = JSONParser().parse(request)
         user = User.objects.get(pk=data['id'])
         print('users password data', data)
-        user.set_password(data['new_password'])
-        user.save()
-        return Response('Password changed successfully')
-
-        # if form.is_valid():
-        #     user = form.save()
-        #     update_session_auth_hash(request, user)
-        #     return Response(data='Your password was successfully updated!')
-        # return Response('please correct the error')
+        serializer = ChangePasswordSerializer(data=data)
+        if data['new_password'] == data['old_password']:
+            return Response('your old password and new password can not be same')
+        if serializer.is_valid():
+            user.set_password(data['new_password'])
+            user.save()
+            return Response('Password changed successfully')
+        return Response('your password is week')
 
 
 class Register_Course(APIView):

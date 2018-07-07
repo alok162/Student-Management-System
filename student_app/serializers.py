@@ -20,9 +20,7 @@ class RegisterCourseSerilizer(serializers.ModelSerializer):
 
 
 class ChangePasswordSerializer(serializers.Serializer):
-    """
-    Serializer for password change endpoint.
-    """
+    id = serializers.IntegerField()
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
 
