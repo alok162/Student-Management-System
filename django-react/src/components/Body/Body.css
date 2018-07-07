@@ -1,8 +1,10 @@
 .title {
   text-align: center;
   padding-top: 90px;
+  color: green;
 }
 
 .reg-course {
   margin-left: 8%;
+  margin-right: 8%;
 }
