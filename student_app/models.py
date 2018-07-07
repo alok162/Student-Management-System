@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 
 class Courses(models.Model):
-    course_name = models.CharField(max_length=200)
+    course_name = models.CharField(max_length=150)
 
 
 class Enrollment(models.Model):
