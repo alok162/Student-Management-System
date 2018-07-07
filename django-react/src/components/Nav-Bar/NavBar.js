@@ -3,6 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
 
 class NavBar extends Component {
+  onClick() {
+    localStorage.clear();
+    this.props.history.push("/login");
+  }
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,8 +43,12 @@ class NavBar extends Component {
             </li> */}
           </ul>
           <form className="form-inline my-2 my-lg-0">
-            <a className="nav-link login" href="login">
-              Login <span className="sr-only">(current)</span>
+            <a
+              onClick={this.onClick.bind(this)}
+              className="nav-link login"
+              href="login"
+            >
+              Logout <span className="sr-only">(current)</span>
             </a>
             {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
           </form>

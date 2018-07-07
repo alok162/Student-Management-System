@@ -25,8 +25,9 @@ class Body extends Component {
         }
       })
       .then(res => {
-        console.log("list of registred courses", res.data);
+        // console.log("list of registred courses", res.data);
       });
+    this.initialData();
   }
 
   onClickProductSelected(cell, row, rowIndex) {
@@ -43,9 +44,9 @@ class Body extends Component {
         }
       })
       .then(res => {
-        console.log("list of registred courses", res.data);
+        // console.log("list of registred courses", res.data);
       });
-    this.componentWillMount();
+    this.initialData();
   }
 
   cellButton(cell, row, enumObject, rowIndex) {
@@ -69,8 +70,12 @@ class Body extends Component {
       </button>
     );
   }
-
   componentWillMount() {
+    this.initialData();
+  }
+
+  initialData() {
+    console.log("function called");
     axios
       .get("/list_course/11/", {
         headers: {
@@ -92,11 +97,19 @@ class Body extends Component {
       })
       .then(res => {
         this.setState({ listOfAvailCourses: res.data });
-        console.log("list of registred courses", this.state.listOfAvailCourses);
+        console.log("list of available courses", this.state.listOfAvailCourses);
       });
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.listOfRegCourses != nextState.value;
+  }
+
   render() {
+    if (localStorage.getItem("student_id") == undefined) {
+      this.props.history.push("/login");
+      return null;
+    }
     return (
       <div>
         <Header />
