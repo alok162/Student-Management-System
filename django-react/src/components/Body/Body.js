@@ -27,6 +27,7 @@ class Body extends Component {
       .then(res => {
         // console.log("list of registred courses", res.data);
       });
+    window.location.href = "/Body";
     this.initialData();
   }
 
@@ -46,6 +47,8 @@ class Body extends Component {
       .then(res => {
         // console.log("list of registred courses", res.data);
       });
+    window.location.href = "/Body";
+
     this.initialData();
   }
 
@@ -77,7 +80,7 @@ class Body extends Component {
   initialData() {
     console.log("function called");
     axios
-      .get("/list_course/"+localStorage.getItem("student_id")+"/", {
+      .get("/list_course/" + localStorage.getItem("student_id") + "/", {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json"
@@ -89,7 +92,7 @@ class Body extends Component {
       });
 
     axios
-      .get("/available_course/"+localStorage.getItem("student_id")+"/", {
+      .get("/available_course/" + localStorage.getItem("student_id") + "/", {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json"
@@ -99,10 +102,6 @@ class Body extends Component {
         this.setState({ listOfAvailCourses: res.data });
         console.log("list of available courses", this.state.listOfAvailCourses);
       });
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.listOfRegCourses != nextState.value;
   }
 
   render() {

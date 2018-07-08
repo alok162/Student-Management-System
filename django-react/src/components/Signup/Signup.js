@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import Login from "../Login/Login";
+import "./Signup.css";
 
 import axios from "axios";
 
@@ -16,14 +17,16 @@ class Signup extends Component {
   }
 
   handleChange(e) {
-    // If you are using babel, you can use ES 6 dictionary syntax
-    // let change = { [e.target.name] = e.target.value }
     let change = {};
     change[e.target.name] = e.target.value;
     this.setState(change);
   }
 
   render() {
+    if (localStorage.getItem("student_id") != undefined) {
+      this.props.history.push("/Body");
+      return null;
+    }
     return (
       <div>
         <div class="login-form">

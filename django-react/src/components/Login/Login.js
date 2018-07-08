@@ -35,6 +35,10 @@ class Login extends Component {
   }
 
   render() {
+    if (localStorage.getItem("student_id") != undefined) {
+      this.props.history.push("/Body");
+      return null;
+    }
     return (
       <div>
         <div class="login-form">
