@@ -32,9 +32,9 @@ class Body extends Component {
   }
 
   onClickProductSelected(cell, row, rowIndex) {
-    console.log(row, row["id"]);
+    console.log(row, row["id"], localStorage.getItem("student_id"));
     let data = JSON.stringify({
-      student: 11,
+      student: localStorage.getItem("student_id"),
       course: row["id"]
     });
     axios
