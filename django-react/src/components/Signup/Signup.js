@@ -89,10 +89,10 @@ class Signup extends Component {
               <input
                 type="password"
                 class="form-control input-lg"
-                name="password2"
+                name="password1"
                 placeholder="Password"
                 onChange={this.handleChange.bind(this)}
-                value={this.state.password}
+                value={this.state.password1}
                 required="required"
               />
             </div>
@@ -103,7 +103,7 @@ class Signup extends Component {
                 name="password2"
                 placeholder="Confirm Password"
                 onChange={this.handleChange.bind(this)}
-                value={this.state.password}
+                value={this.state.password2}
                 required="required"
               />
             </div>
@@ -124,17 +124,16 @@ class Signup extends Component {
 
   onClick(ev) {
     let data = JSON.stringify({
-      password1: this.state.password1,
-      password2: this.state.password2,
       username: this.state.username,
-      email: this.state.email
+      email: this.state.email,
+      password1: this.state.password1,
+      password2: this.state.password2
     });
 
     axios
-      .post("signup/", data, {
+      .post("/signup/", data, {
         headers: {
-          "Content-Type": "application/json",
-          accept: "application/json"
+          "Content-Type": "application/json"
         }
       })
       .then(res => {
